@@ -18,7 +18,7 @@
 	options:
 	-h, --help show this help message and exit
 
-	--style STYLE Choose style: [Available styles]
+	--style STYLE Choose style: [Available styles] Default: van_gogh_starry_night
 
 	--size SIZE Choose the size of the video. Default: 512
 
