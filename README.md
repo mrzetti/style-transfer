@@ -1,7 +1,4 @@
-
 # Artistic Style Transfer using a webcam
-
-  
 
 ## Installation
 
@@ -10,19 +7,13 @@
 * [python](https://www.python.org/downloads/)
 
 ### Quick start
-`git clone https://github.com/mrzetti/style-transfer`
+`git clone https://github.com/mrzetti/style-transfer` 
 `pip install -r requirements.txt`
-
-  
-
 
 ## Usage
 
-  
 
 `python style_transfer.py [-h] [--style STYLE] [--size SIZE]`
-
-  
 
 	options:
 	-h, --help show this help message and exit
