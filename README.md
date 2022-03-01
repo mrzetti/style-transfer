@@ -2,7 +2,7 @@
 
 ## Installation
 
-### Required:
+### Required
 * [git](https://git-scm.com/downloads)
 * [python](https://www.python.org/downloads/)
 
@@ -41,4 +41,4 @@
 
 ## TODO:
 
-* fix `frame_size` - Only DEFAULT / 512 works
+* fix `frame_size` - Only 512 works in Tensorflow 2.8 (works with 2.3)
