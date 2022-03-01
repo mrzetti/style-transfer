@@ -1,17 +1,13 @@
+"""Artistic style transfer script."""
 import argparse
-import os
 import cv2
-import functools
 import numpy as np
 import tensorflow as tf
 import tensorflow_hub as hub
-import matplotlib.pyplot as plt
-from matplotlib import gridspec
-from style_functions import *
+from style_functions import resize_image_to_square, load_image
 
 parser = argparse.ArgumentParser(description='Style Transfer')
-parser.add_argument('--style', default="van_gogh_starry_night", 
-                    help="""Choose style:\n
+parser.add_argument('--style', default="van_gogh_starry_night", help="""Choose style:\n
 'kanagawa_great_wave'
 'kandinsky_composition_7'
 'hubble_pillars_of_creation'
@@ -57,12 +53,13 @@ if any(style in string for string in styles):
     print('Available GPU: ', tf.test.is_gpu_available())
 
     print(f'\nUsing style: {style}')
+    STYLE = style
 else:
-    style = "van_gogh_starry_night"
+    STYLE = "van_gogh_starry_night"
     raise ValueError('Style not supported. Using default..')
 
-hub_handle = 'https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2'
-hub_module = hub.load(hub_handle)
+HUB_HANDLE = 'https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2'
+hub_module = hub.load(HUB_HANDLE)
 
 style_urls = dict(
     kanagawa_great_wave         = 'https://upload.wikimedia.org/wikipedia/commons/0/0a/The_Great_Wave_off_Kanagawa.jpg',
@@ -79,10 +76,10 @@ style_urls = dict(
     amadeo_style_life           = 'https://upload.wikimedia.org/wikipedia/commons/8/8e/Untitled_%28Still_life%29_%281913%29_-_Amadeo_Souza-Cardoso_%281887-1918%29_%2817385824283%29.jpg',
     derkovtis_talig             = 'https://upload.wikimedia.org/wikipedia/commons/3/37/Derkovits_Gyula_Talig%C3%A1s_1920.jpg',
     amadeo_cardoso              = 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Amadeo_de_Souza-Cardoso%2C_1915_-_Landscape_with_black_figure.jpg'
-) 
+)
 
-style_image_size   = 256
-style_images       = {k: load_image(v, (style_image_size, style_image_size)) for k, v in style_urls.items()}
+STYLE_IMAGE_SIZE   = 256
+style_images       = {k: load_image(v, (STYLE_IMAGE_SIZE, STYLE_IMAGE_SIZE)) for k, v in style_urls.items()}
 style_images       = {k: tf.nn.avg_pool(style_image, ksize=[3,3], strides=[1,1], padding='SAME') for k, style_image in style_images.items()}
 cap        = cv2.VideoCapture(0)
 
@@ -105,11 +102,9 @@ while True:
     else:
         print('Error')
         break
-    
+
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
 cap.release()
 cv2.destroyAllWindows()
-    
-
