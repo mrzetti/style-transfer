@@ -7,7 +7,7 @@
 * [python](https://www.python.org/downloads/)
 
 ### Quick start
-`git clone https://github.com/mrzetti/style-transfer` 
+`git clone https://github.com/mrzetti/style-transfer`  
 `pip install -r requirements.txt`
 
 ## Usage
