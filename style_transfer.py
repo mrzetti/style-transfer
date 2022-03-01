@@ -81,9 +81,7 @@ style_urls = dict(
     amadeo_cardoso              = 'https://upload.wikimedia.org/wikipedia/commons/7/7d/Amadeo_de_Souza-Cardoso%2C_1915_-_Landscape_with_black_figure.jpg'
 ) 
 
-#content_image_size = 384
 style_image_size   = 256
-#content_images     = {k: load_image(v, (content_image_size, content_image_size)) for k, v in content_urls.items()}
 style_images       = {k: load_image(v, (style_image_size, style_image_size)) for k, v in style_urls.items()}
 style_images       = {k: tf.nn.avg_pool(style_image, ksize=[3,3], strides=[1,1], padding='SAME') for k, style_image in style_images.items()}
 cap        = cv2.VideoCapture(0)
