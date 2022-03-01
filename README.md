@@ -6,3 +6,6 @@ Install required packages
 
 ## Usage
 `python style_transfer.py`
+
+## TODO:
+* fix frame_size - Only DEFAULT / 512 works
