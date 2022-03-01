@@ -1,5 +1,8 @@
 # Artistic Style Transfer for a live video feed
 
-<a id="content"></a>
+## Installation  
+Install required packages
+`pip install -r requirements.txt`
 
-## Content
+## Usage
+`python style_transfer.py`
