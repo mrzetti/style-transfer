@@ -1,12 +1,16 @@
 
-# Artistic Style Transfer for a live video feed
+# Artistic Style Transfer using a webcam
 
   
 
 ## Installation
 
-Install required packages
+### Required:
+* [git](https://git-scm.com/downloads)
+* [python](https://www.python.org/downloads/)
 
+### Quick start
+`git clone https://github.com/mrzetti/style-transfer`
 `pip install -r requirements.txt`
 
   
