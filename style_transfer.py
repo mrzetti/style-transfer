@@ -7,7 +7,7 @@ import tensorflow_hub as hub
 from style_functions import resize_image_to_square, load_image
 
 parser = argparse.ArgumentParser(description='Style Transfer')
-parser.add_argument('--style', default="van_gogh_starry_night", help="""Choose style:\n
+parser.add_argument('--style', default="default", help="""Choose style:\n
 'kanagawa_great_wave'
 'kandinsky_composition_7'
 'hubble_pillars_of_creation'
@@ -46,6 +46,20 @@ styles = [
     'amadeo_cardoso'
     ]
 
+if style=="default":
+    print('\nChoose one of the following styles by typing in their id.\n')
+
+    for i in enumerate(styles):
+        print(f'{i[0]}: "{i[1]}"')
+    
+    print('\n')
+
+    given_id = -1
+    while not int(given_id) in range(0,len(styles)):
+        given_id = input('Id of the style: ')
+
+    style = styles[int(given_id)]
+
 if any(style in string for string in styles):
     print('TF Version: ', tf.__version__)
     print('TF-Hub Version: ', hub.__version__)
@@ -54,6 +68,7 @@ if any(style in string for string in styles):
 
     print(f'\nUsing style: {style}')
     STYLE = style
+
 else:
     STYLE = "van_gogh_starry_night"
     raise ValueError('Style not supported. Using default..')
